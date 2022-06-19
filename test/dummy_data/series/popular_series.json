@@ -1,0 +1,26 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "poster_path": "/2eALZgo89aHezKDRjZMveRjD5gc.jpg",
+      "popularity": 15.40679,
+      "id": 52,
+      "backdrop_path": "/vBCZI4LTOVMGIlrBPhD1LQjDYtY.jpg",
+      "vote_average": 7.13,
+      "overview": "That '70s Show is an American television period sitcom that originally aired on Fox from August 23, 1998, to May 18, 2006. The series focused on the lives of a group of teenage friends living in the fictional suburban town of Point Place, Wisconsin, from May 17, 1976, to December 31, 1979.\n\nThe main teenage cast members were Topher Grace, Mila Kunis, Ashton Kutcher, Danny Masterson, Laura Prepon, and Wilmer Valderrama. The main adult cast members were Debra Jo Rupp, Kurtwood Smith, Don Stark and, during the first three seasons, Tanya Roberts.",
+      "first_air_date": "1998-08-23",
+      "origin_country": [
+        "US"
+      ],
+      "genre_ids": [
+        35
+      ],
+      "original_language": "en",
+      "vote_count": 61,
+      "name": "That '70s Show",
+      "original_name": "That '70s Show"
+    }
+  ],
+  "total_results": 20000,
+  "total_pages": 1000
+}
