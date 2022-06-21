@@ -39,37 +39,37 @@ final locator = GetIt.instance;
 void init() {
   // movies bloc
   locator.registerFactory(
-        () => SearchBloc(
+    () => SearchBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => NowPlayingMoviesBloc(
+    () => NowPlayingMoviesBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => PopularMoviesBloc(
+    () => PopularMoviesBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => TopRatedMoviesBloc(
+    () => TopRatedMoviesBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => MovieDetailBloc(
+    () => MovieDetailBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => MovieRecommendationsBloc(
+    () => MovieRecommendationsBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => MovieWatchlistBloc(
+    () => MovieWatchlistBloc(
       getWatchlistMovies: locator(),
       getWatchListStatus: locator(),
       saveWatchlist: locator(),
@@ -79,37 +79,37 @@ void init() {
 
   // series bloc
   locator.registerFactory(
-        () => SeriesSearchBloc(
+    () => SeriesSearchBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => NowPlayingSeriesBloc(
+    () => NowPlayingSeriesBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => PopularSeriesBloc(
+    () => PopularSeriesBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => TopRatedSeriesBloc(
+    () => TopRatedSeriesBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => SeriesDetailBloc(
+    () => SeriesDetailBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => SeriesRecommendationsBloc(
+    () => SeriesRecommendationsBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => SeriesWatchlistBloc(
+    () => SeriesWatchlistBloc(
       getWatchlistSeriesStatus: locator(),
       getWatchlistSeries: locator(),
       saveWatchlistSeries: locator(),

@@ -14,16 +14,17 @@ class _PopularSeriesPageState extends State<PopularSeriesPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() =>
-        context.read<PopularSeriesBloc>().add(
-          PopularSeries(),
-        ),
+    Future.microtask(
+      () => context.read<PopularSeriesBloc>().add(
+            PopularSeries(),
+          ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('PopularSeriesPage'),
       appBar: AppBar(
         title: Text('Popular TV Series'),
       ),

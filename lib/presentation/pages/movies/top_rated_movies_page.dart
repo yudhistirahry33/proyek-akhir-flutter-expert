@@ -24,6 +24,7 @@ class _TopRatedMoviesPageState extends State<TopRatedMoviesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('TopRatedMoviesPage'),
       appBar: AppBar(
         title: Text('Top Rated Movies'),
       ),
@@ -31,23 +32,23 @@ class _TopRatedMoviesPageState extends State<TopRatedMoviesPage> {
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<TopRatedMoviesBloc, MovieState>(
             builder: (context, state) {
-              if (state is TopRatedMovieLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (state is TopRatedMovieHasData) {
-                final result = state.resultTopRatedMovie;
-                return ListView.builder(
-                  itemBuilder: (context, index) {
-                    final movie = result[index];
-                    return MovieCard(movie);
-                  },
-                  itemCount: result.length,
-                );
-              } else {
-                return Text('Failed');
-              }
-            }),
+          if (state is TopRatedMovieLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is TopRatedMovieHasData) {
+            final result = state.resultTopRatedMovie;
+            return ListView.builder(
+              itemBuilder: (context, index) {
+                final movie = result[index];
+                return MovieCard(movie);
+              },
+              itemCount: result.length,
+            );
+          } else {
+            return Text('Failed');
+          }
+        }),
       ),
     );
   }

@@ -23,20 +23,21 @@ class _SeriesDetailPageState extends State<SeriesDetailPage> {
     super.initState();
     Future.microtask(() {
       context.read<SeriesDetailBloc>().add(
-        DetailSeries(widget.id),
-      );
+            DetailSeries(widget.id),
+          );
       context.read<SeriesWatchlistBloc>().add(
-        SeriesWatchlistStatus(widget.id),
-      );
+            SeriesWatchlistStatus(widget.id),
+          );
       context.read<SeriesRecommendationsBloc>().add(
-        SeriesRecommendation(widget.id),
-      );
+            SeriesRecommendation(widget.id),
+          );
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final isAddedWatchlistSeries = context.select<SeriesWatchlistBloc, bool>((bloc) {
+    final isAddedWatchlistSeries =
+        context.select<SeriesWatchlistBloc, bool>((bloc) {
       if (bloc.state is SeriesWatchlistHasStatus) {
         return (bloc.state as SeriesWatchlistHasStatus).result;
       }
@@ -44,6 +45,7 @@ class _SeriesDetailPageState extends State<SeriesDetailPage> {
     });
 
     return Scaffold(
+      key: const Key('SeriesDetailContent'),
       body: BlocBuilder<SeriesDetailBloc, SeriesState>(
         builder: (context, state) {
           if (state is SeriesDetailLoading) {
@@ -71,8 +73,7 @@ class DetailContent extends StatefulWidget {
   final SeriesDetail series;
   late bool isAddedWatchlistSeries;
 
-  DetailContent(
-      this.series, this.isAddedWatchlistSeries);
+  DetailContent(this.series, this.isAddedWatchlistSeries);
 
   @override
   State<DetailContent> createState() => _DetailContentState();
@@ -85,7 +86,8 @@ class _DetailContentState extends State<DetailContent> {
     return Stack(
       children: [
         CachedNetworkImage(
-          imageUrl: 'https://image.tmdb.org/t/p/w500${widget.series.posterPath}',
+          imageUrl:
+              'https://image.tmdb.org/t/p/w500${widget.series.posterPath}',
           width: screenWidth,
           placeholder: (context, url) => Center(
             child: CircularProgressIndicator(),
@@ -126,9 +128,8 @@ class _DetailContentState extends State<DetailContent> {
                                       .read<SeriesWatchlistBloc>()
                                       .add(AddWatchlistSeries(widget.series));
                                 } else {
-                                  context
-                                      .read<SeriesWatchlistBloc>()
-                                      .add(RemoveFromWatchlistSeries(widget.series));
+                                  context.read<SeriesWatchlistBloc>().add(
+                                      RemoveFromWatchlistSeries(widget.series));
                                 }
                                 String message = "";
                                 const watchlistAddSuccessMessage =
@@ -137,7 +138,8 @@ class _DetailContentState extends State<DetailContent> {
                                     'Removed from Watchlist';
 
                                 final state =
-                                    BlocProvider.of<SeriesWatchlistBloc>(context)
+                                    BlocProvider.of<SeriesWatchlistBloc>(
+                                            context)
                                         .state;
 
                                 if (state is SeriesWatchlistHasStatus) {
@@ -168,7 +170,7 @@ class _DetailContentState extends State<DetailContent> {
                                 }
                                 setState(() {
                                   widget.isAddedWatchlistSeries =
-                                  !widget.isAddedWatchlistSeries;
+                                      !widget.isAddedWatchlistSeries;
                                 });
                               },
                               child: Row(
@@ -191,10 +193,12 @@ class _DetailContentState extends State<DetailContent> {
                               'Last Air Date: ' + widget.series.lastAirDate,
                             ),
                             Text(
-                              'Seasons: ' + widget.series.numberOfSeasons.toString(),
+                              'Seasons: ' +
+                                  widget.series.numberOfSeasons.toString(),
                             ),
                             Text(
-                              'Total Episodes: ' + widget.series.numberOfEpisodes.toString(),
+                              'Total Episodes: ' +
+                                  widget.series.numberOfEpisodes.toString(),
                             ),
                             Row(
                               children: [
@@ -233,7 +237,8 @@ class _DetailContentState extends State<DetailContent> {
                                   return Center(
                                     child: Text(state.message),
                                   );
-                                } else if (state is SeriesRecommendationHasData) {
+                                } else if (state
+                                    is SeriesRecommendationHasData) {
                                   return SizedBox(
                                     height: 150,
                                     child: ListView.builder(
@@ -252,20 +257,20 @@ class _DetailContentState extends State<DetailContent> {
                                             },
                                             child: ClipRRect(
                                               borderRadius:
-                                              const BorderRadius.all(
+                                                  const BorderRadius.all(
                                                 Radius.circular(8),
                                               ),
                                               child: CachedNetworkImage(
                                                 imageUrl:
-                                                'https://image.tmdb.org/t/p/w500${tvs.posterPath}',
+                                                    'https://image.tmdb.org/t/p/w500${tvs.posterPath}',
                                                 placeholder: (context, url) =>
-                                                const Center(
+                                                    const Center(
                                                   child:
-                                                  CircularProgressIndicator(),
+                                                      CircularProgressIndicator(),
                                                 ),
                                                 errorWidget:
                                                     (context, url, error) =>
-                                                const Icon(Icons.error),
+                                                        const Icon(Icons.error),
                                               ),
                                             ),
                                           ),

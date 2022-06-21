@@ -41,7 +41,7 @@ class SeriesRemoteDataSourceImpl implements SeriesRemoteDataSource {
     IOClient ioClient = IOClient(clientCert);
 
     final response =
-    await ioClient.get(Uri.parse('$BASE_URL/tv/on_the_air?$API_KEY'));
+        await ioClient.get(Uri.parse('$BASE_URL/tv/on_the_air?$API_KEY'));
 
     if (response.statusCode == 200) {
       return SeriesResponse.fromJson(json.decode(response.body)).seriesList;
@@ -91,7 +91,7 @@ class SeriesRemoteDataSourceImpl implements SeriesRemoteDataSource {
     IOClient ioClient = IOClient(clientCert);
 
     final response =
-    await ioClient.get(Uri.parse('$BASE_URL/tv/popular?$API_KEY'));
+        await ioClient.get(Uri.parse('$BASE_URL/tv/popular?$API_KEY'));
 
     if (response.statusCode == 200) {
       return SeriesResponse.fromJson(json.decode(response.body)).seriesList;
@@ -108,7 +108,7 @@ class SeriesRemoteDataSourceImpl implements SeriesRemoteDataSource {
     IOClient ioClient = IOClient(clientCert);
 
     final response =
-    await ioClient.get(Uri.parse('$BASE_URL/tv/top_rated?$API_KEY'));
+        await ioClient.get(Uri.parse('$BASE_URL/tv/top_rated?$API_KEY'));
 
     if (response.statusCode == 200) {
       return SeriesResponse.fromJson(json.decode(response.body)).seriesList;

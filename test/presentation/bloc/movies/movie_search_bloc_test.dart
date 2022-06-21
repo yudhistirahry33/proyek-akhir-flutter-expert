@@ -28,7 +28,7 @@ void main() {
     id: 557,
     originalTitle: 'Spider-Man',
     overview:
-    'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
+        'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
     popularity: 60.441,
     posterPath: '/rweIrveL43TaxUN0akQEaAXL6x0.jpg',
     releaseDate: '2002-05-01',
@@ -61,8 +61,8 @@ void main() {
   blocTest<SearchBloc, SearchState>(
     'Should emit [Loading, Error] when get search is unsuccessful',
     build: () {
-      when(mockSearchMovies.execute(tQuery)).thenAnswer(
-              (_) async => Left(ServerFailure('Server Failure')));
+      when(mockSearchMovies.execute(tQuery))
+          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
       return searchBloc;
     },
     act: (bloc) => bloc.add(OnQueryChanged(tQuery)),

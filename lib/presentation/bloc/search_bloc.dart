@@ -32,7 +32,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             emit(SearchHasData(data));
           },
         );
-      }, transformer: debounce(const Duration(milliseconds: 500)),
+      },
+      transformer: debounce(const Duration(milliseconds: 500)),
     );
   }
 }
@@ -56,7 +57,8 @@ class SeriesSearchBloc extends Bloc<SearchEvent, SearchState> {
             emit(SeriesSearchHasData(data));
           },
         );
-      }, transformer: debounce(const Duration(milliseconds: 500)),
+      },
+      transformer: debounce(const Duration(milliseconds: 500)),
     );
   }
 }

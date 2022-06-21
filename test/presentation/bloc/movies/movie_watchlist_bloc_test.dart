@@ -160,8 +160,7 @@ void main() {
       'Should return error message when movie watchlist is unsuccessfully removed',
       build: () {
         when(mockRemoveWatchlist.execute(testMovieDetail)).thenAnswer(
-            (_) async =>
-                Left(DatabaseFailure('can\'t add data to watchlist')));
+            (_) async => Left(DatabaseFailure('can\'t add data to watchlist')));
         return movieWatchlistBloc;
       },
       act: (bloc) => bloc.add(RemoveFromWatchlist(testMovieDetail)),

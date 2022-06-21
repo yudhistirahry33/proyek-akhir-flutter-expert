@@ -101,7 +101,8 @@ class SeriesDetailBloc extends Bloc<SeriesEvent, SeriesState> {
 class SeriesRecommendationsBloc extends Bloc<SeriesEvent, SeriesState> {
   final GetSeriesRecommendations _getSeriesRecommendations;
 
-  SeriesRecommendationsBloc(this._getSeriesRecommendations) : super(SeriesRecommendationEmpty()) {
+  SeriesRecommendationsBloc(this._getSeriesRecommendations)
+      : super(SeriesRecommendationEmpty()) {
     on<SeriesRecommendation>((event, emit) async {
       final id = event.id;
 

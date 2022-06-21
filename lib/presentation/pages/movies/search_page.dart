@@ -10,6 +10,7 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('MovieSearchPage'),
       appBar: AppBar(
         title: Text('Search Movies'),
       ),
@@ -53,17 +54,12 @@ class SearchPage extends StatelessWidget {
                     ),
                   );
                 } else if (state is SearchError) {
-                  return Expanded(
-                    child: Center(
-                      child: Text(state.message),
-                    ),
+                  return Text(
+                    state.message,
+                    key: Key('error_message'),
                   );
                 } else {
-                  return Expanded(
-                    child: Container(
-                      child: Text('No results found.'),
-                    ),
-                  );
+                  return Text('No results found.');
                 }
               },
             ),

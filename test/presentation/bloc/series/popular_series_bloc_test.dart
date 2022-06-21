@@ -46,7 +46,7 @@ void main() {
     },
     act: (bloc) => bloc.add(PopularSeries()),
     expect: () =>
-    [PopularSeriesLoading(), const PopularSeriesError('Server Failure')],
+        [PopularSeriesLoading(), const PopularSeriesError('Server Failure')],
     verify: (bloc) {
       verify(mockGetPopularSeries.execute());
     },

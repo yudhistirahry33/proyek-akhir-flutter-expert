@@ -14,16 +14,17 @@ class _TopRatedSeriesPageState extends State<TopRatedSeriesPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() =>
-        context.read<TopRatedSeriesBloc>().add(
-          TopRatedSeries(),
-        ),
+    Future.microtask(
+      () => context.read<TopRatedSeriesBloc>().add(
+            TopRatedSeries(),
+          ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('TopRatedSeriesPage'),
       appBar: AppBar(
         title: Text('Top Rated TV Series'),
       ),

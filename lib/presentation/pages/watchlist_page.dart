@@ -17,14 +17,14 @@ class WatchlistPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _watchlistButton(
+            watchlistButton(
               title: 'Movies Watchlist',
               onTap: () {
                 Navigator.pushNamed(context, WatchlistMoviesPage.ROUTE_NAME);
               },
             ),
             SizedBox(height: 16),
-            _watchlistButton(
+            watchlistButton(
               title: 'TV Series Watchlist',
               onTap: () {
                 Navigator.pushNamed(context, WatchlistSeriesPage.ROUTE_NAME);
@@ -36,7 +36,7 @@ class WatchlistPage extends StatelessWidget {
     );
   }
 
-  InkWell _watchlistButton({required String title, required Function() onTap}) {
+  InkWell watchlistButton({required String title, required Function() onTap}) {
     return InkWell(
       child: Container(
         padding: const EdgeInsets.all(16.0),
@@ -51,7 +51,9 @@ class WatchlistPage extends StatelessWidget {
               title,
               style: kHeading6,
             ),
-            Icon(Icons.arrow_forward_ios,),
+            Icon(
+              Icons.arrow_forward_ios,
+            ),
           ],
         ),
       ),

@@ -14,16 +14,17 @@ class _PopularMoviesPageState extends State<PopularMoviesPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() =>
-        context.read<PopularMoviesBloc>().add(
-          PopularMovie(),
-        ),
+    Future.microtask(
+      () => context.read<PopularMoviesBloc>().add(
+            PopularMovie(),
+          ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('PopularMoviesPage'),
       appBar: AppBar(
         title: Text('Popular Movies'),
       ),

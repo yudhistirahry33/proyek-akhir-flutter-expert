@@ -33,7 +33,8 @@ void main() {
       return movieRecommendationsBloc;
     },
     act: (bloc) => bloc.add(const MovieRecommendation(tId)),
-    expect: () => [MovieRecommendationLoading(), MovieRecommendationHasData(tMovieList)],
+    expect: () =>
+        [MovieRecommendationLoading(), MovieRecommendationHasData(tMovieList)],
     verify: (bloc) {
       verify(mockGetMovieRecommendations.execute(tId));
     },
@@ -47,8 +48,10 @@ void main() {
       return movieRecommendationsBloc;
     },
     act: (bloc) => bloc.add(const MovieRecommendation(tId)),
-    expect: () =>
-    [MovieRecommendationLoading(), const MovieRecommendationError('Server Failure')],
+    expect: () => [
+      MovieRecommendationLoading(),
+      const MovieRecommendationError('Server Failure')
+    ],
     verify: (bloc) {
       verify(mockGetMovieRecommendations.execute(tId));
     },

@@ -42,8 +42,8 @@ void main() {
   blocTest<NowPlayingSeriesBloc, SeriesState>(
     'Should emit [Loading, Error] when get now playing series is unsuccessful',
     build: () {
-      when(mockGetNowPlayingSeries.execute()).thenAnswer(
-              (_) async => Left(ServerFailure('Server Failure')));
+      when(mockGetNowPlayingSeries.execute())
+          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
       return nowPlayingSeriesBloc;
     },
     act: (bloc) => bloc.add(NowPlayingSeries()),

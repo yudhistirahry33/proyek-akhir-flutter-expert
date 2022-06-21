@@ -57,7 +57,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.locator<MovieWatchlistBloc>(),
         ),
-
         BlocProvider(
           create: (_) => di.locator<SeriesSearchBloc>(),
         ),

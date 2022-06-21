@@ -45,6 +45,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     });
 
     return Scaffold(
+      key: const Key('DetailContent'),
       body: BlocBuilder<MovieDetailBloc, MovieState>(builder: (context, state) {
         if (state is MovieDetailLoading) {
           return const Center(

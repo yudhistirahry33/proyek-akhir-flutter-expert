@@ -123,8 +123,7 @@ void main() {
       'Should return error message when series watchlist is unsuccessfully added',
       build: () {
         when(mockSaveWatchlistSeries.execute(testSeriesDetail)).thenAnswer(
-            (_) async =>
-                Left(DatabaseFailure('can\'t add data to watchlist')));
+            (_) async => Left(DatabaseFailure('can\'t add data to watchlist')));
         return seriesWatchlistBloc;
       },
       act: (bloc) => bloc.add(AddWatchlistSeries(testSeriesDetail)),
@@ -160,8 +159,7 @@ void main() {
       'Should return error message when series watchlist is unsuccessfully removed',
       build: () {
         when(mockRemoveWatchlistSeries.execute(testSeriesDetail)).thenAnswer(
-            (_) async =>
-                Left(DatabaseFailure('can\'t add data to watchlist')));
+            (_) async => Left(DatabaseFailure('can\'t add data to watchlist')));
         return seriesWatchlistBloc;
       },
       act: (bloc) => bloc.add(RemoveFromWatchlistSeries(testSeriesDetail)),

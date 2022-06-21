@@ -16,10 +16,10 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
   @override
   void initState() {
     super.initState();
-    Future.microtask(() =>
-        context.read<MovieWatchlistBloc>().add(
-          MovieWatchlist(),
-        ),
+    Future.microtask(
+      () => context.read<MovieWatchlistBloc>().add(
+            MovieWatchlist(),
+          ),
     );
   }
 
@@ -31,13 +31,14 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
 
   void didPopNext() {
     context.read<MovieWatchlistBloc>().add(
-      MovieWatchlist(),
-    );
+          MovieWatchlist(),
+        );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('WatchlistMoviesPage'),
       appBar: AppBar(
         title: Text('Movies Watchlist'),
       ),
@@ -56,6 +57,11 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
                   return MovieCard(movie);
                 },
                 itemCount: state.movie.length,
+              );
+            } else if (state is MovieWatchlistError) {
+              return Text(
+                state.message,
+                key: const Key('error_message'),
               );
             } else {
               return Text('');

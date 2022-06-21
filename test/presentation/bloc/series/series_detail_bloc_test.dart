@@ -31,7 +31,8 @@ void main() {
       return seriesDetailBloc;
     },
     act: (bloc) => bloc.add(const DetailSeries(tId)),
-    expect: () => [SeriesDetailLoading(), SeriesDetailHasData(testSeriesDetail)],
+    expect: () =>
+        [SeriesDetailLoading(), SeriesDetailHasData(testSeriesDetail)],
     verify: (bloc) {
       verify(mockGetSeriesDetail.execute(tId));
     },
@@ -40,13 +41,13 @@ void main() {
   blocTest<SeriesDetailBloc, SeriesState>(
     'Should emit [Loading, Error] when get series detail is unsuccessful',
     build: () {
-      when(mockGetSeriesDetail.execute(tId)).thenAnswer(
-              (_) async => Left(ServerFailure('Server Failure')));
+      when(mockGetSeriesDetail.execute(tId))
+          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
       return seriesDetailBloc;
     },
     act: (bloc) => bloc.add(const DetailSeries(tId)),
     expect: () =>
-    [SeriesDetailLoading(), const SeriesDetailError('Server Failure')],
+        [SeriesDetailLoading(), const SeriesDetailError('Server Failure')],
     verify: (bloc) {
       verify(mockGetSeriesDetail.execute(tId));
     },

@@ -16,10 +16,10 @@ class _WatchlistMoviesPageState extends State<WatchlistSeriesPage>
   @override
   void initState() {
     super.initState();
-    Future.microtask(() =>
-        context.read<SeriesWatchlistBloc>().add(
-          SeriesWatchlist(),
-        ),
+    Future.microtask(
+      () => context.read<SeriesWatchlistBloc>().add(
+            SeriesWatchlist(),
+          ),
     );
   }
 
@@ -31,13 +31,14 @@ class _WatchlistMoviesPageState extends State<WatchlistSeriesPage>
 
   void didPopNext() {
     context.read<SeriesWatchlistBloc>().add(
-      SeriesWatchlist(),
-    );
+          SeriesWatchlist(),
+        );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('WatchlistSeriesPage'),
       appBar: AppBar(
         title: Text('TV Series Watchlist'),
       ),
@@ -56,6 +57,11 @@ class _WatchlistMoviesPageState extends State<WatchlistSeriesPage>
                   return SeriesCard(series);
                 },
                 itemCount: state.series.length,
+              );
+            } else if (state is SeriesWatchlistError) {
+              return Text(
+                state.message,
+                key: const Key('error_message'),
               );
             } else {
               return Text('');

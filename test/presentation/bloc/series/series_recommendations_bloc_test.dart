@@ -14,7 +14,8 @@ void main() {
 
   setUp(() {
     mockGetSeriesRecommendations = MockGetSeriesRecommendations();
-    seriesRecommendationsBloc = SeriesRecommendationsBloc(mockGetSeriesRecommendations);
+    seriesRecommendationsBloc =
+        SeriesRecommendationsBloc(mockGetSeriesRecommendations);
   });
 
   test("initial state should be empty", () {
@@ -32,7 +33,10 @@ void main() {
       return seriesRecommendationsBloc;
     },
     act: (bloc) => bloc.add(const SeriesRecommendation(tId)),
-    expect: () => [SeriesRecommendationLoading(), SeriesRecommendationHasData(tSeriesList)],
+    expect: () => [
+      SeriesRecommendationLoading(),
+      SeriesRecommendationHasData(tSeriesList)
+    ],
     verify: (bloc) {
       verify(mockGetSeriesRecommendations.execute(tId));
     },
@@ -41,13 +45,15 @@ void main() {
   blocTest<SeriesRecommendationsBloc, SeriesState>(
     'Should emit [Loading, Error] when get series recommendation is unsuccessful',
     build: () {
-      when(mockGetSeriesRecommendations.execute(tId)).thenAnswer(
-              (_) async => Left(ServerFailure('Server Failure')));
+      when(mockGetSeriesRecommendations.execute(tId))
+          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
       return seriesRecommendationsBloc;
     },
     act: (bloc) => bloc.add(const SeriesRecommendation(tId)),
-    expect: () =>
-    [SeriesRecommendationLoading(), const SeriesRecommendationError('Server Failure')],
+    expect: () => [
+      SeriesRecommendationLoading(),
+      const SeriesRecommendationError('Server Failure')
+    ],
     verify: (bloc) {
       verify(mockGetSeriesRecommendations.execute(tId));
     },

@@ -59,23 +59,24 @@ class _HomeSeriesPageState extends State<HomeSeriesPage> {
               ),
               BlocBuilder<NowPlayingSeriesBloc, SeriesState>(
                   builder: (context, state) {
-                    if (state is NowPlayingSeriesLoading) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    } else if (state is NowPlayingSeriesHasData) {
-                      final result = state.resultNowPlayingSeries;
-                      return SeriesList(result);
-                    } else {
-                      return Text('Failed');
-                    }
-                  }),
+                if (state is NowPlayingSeriesLoading) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (state is NowPlayingSeriesHasData) {
+                  final result = state.resultNowPlayingSeries;
+                  return SeriesList(result);
+                } else {
+                  return Text('Failed');
+                }
+              }),
               _buildSubHeading(
                   title: 'Popular TV Series',
                   onTap: () {
                     Navigator.pushNamed(context, PopularSeriesPage.ROUTE_NAME);
                   }),
-              BlocBuilder<PopularSeriesBloc, SeriesState>(builder: (context, state) {
+              BlocBuilder<PopularSeriesBloc, SeriesState>(
+                  builder: (context, state) {
                 if (state is PopularSeriesLoading) {
                   return const Center(
                     child: CircularProgressIndicator(),
@@ -93,7 +94,8 @@ class _HomeSeriesPageState extends State<HomeSeriesPage> {
                         Navigator.pushNamed(
                             context, TopRatedSeriesPage.ROUTE_NAME),
                       }),
-              BlocBuilder<TopRatedSeriesBloc, SeriesState>(builder: (context, state) {
+              BlocBuilder<TopRatedSeriesBloc, SeriesState>(
+                  builder: (context, state) {
                 if (state is TopRatedSeriesLoading) {
                   return const Center(
                     child: CircularProgressIndicator(),

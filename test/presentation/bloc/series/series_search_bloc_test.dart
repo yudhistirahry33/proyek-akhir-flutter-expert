@@ -56,8 +56,8 @@ void main() {
   blocTest<SeriesSearchBloc, SearchState>(
     'Should emit [Loading, Error] when get search is unsuccessful',
     build: () {
-      when(mockSearchSeries.execute(tQuery)).thenAnswer(
-              (_) async => Left(ServerFailure('Server Failure')));
+      when(mockSearchSeries.execute(tQuery))
+          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
       return seriesSearchBloc;
     },
     act: (bloc) => bloc.add(OnQueryChanged(tQuery)),

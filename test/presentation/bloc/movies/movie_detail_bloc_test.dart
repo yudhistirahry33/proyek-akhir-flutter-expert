@@ -40,13 +40,13 @@ void main() {
   blocTest<MovieDetailBloc, MovieState>(
     'Should emit [Loading, Error] when get movie detail is unsuccessful',
     build: () {
-      when(mockGetMovieDetail.execute(tId)).thenAnswer(
-              (_) async => Left(ServerFailure('Server Failure')));
+      when(mockGetMovieDetail.execute(tId))
+          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
       return movieDetailBloc;
     },
     act: (bloc) => bloc.add(const DetailMovie(tId)),
     expect: () =>
-    [MovieDetailLoading(), const MovieDetailError('Server Failure')],
+        [MovieDetailLoading(), const MovieDetailError('Server Failure')],
     verify: (bloc) {
       verify(mockGetMovieDetail.execute(tId));
     },

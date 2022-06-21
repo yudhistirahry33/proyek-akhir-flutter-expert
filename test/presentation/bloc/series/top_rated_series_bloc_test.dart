@@ -40,13 +40,13 @@ void main() {
   blocTest<TopRatedSeriesBloc, SeriesState>(
     'Should emit [Loading, Error] when get top rated series is unsuccessful',
     build: () {
-      when(mockGetTopRatedSeries.execute()).thenAnswer(
-              (_) async => Left(ServerFailure('Server Failure')));
+      when(mockGetTopRatedSeries.execute())
+          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
       return topRatedSeriesBloc;
     },
     act: (bloc) => bloc.add(TopRatedSeries()),
     expect: () =>
-    [TopRatedSeriesLoading(), const TopRatedSeriesError('Server Failure')],
+        [TopRatedSeriesLoading(), const TopRatedSeriesError('Server Failure')],
     verify: (bloc) {
       verify(mockGetTopRatedSeries.execute());
     },
